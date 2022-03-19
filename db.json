@@ -1,0 +1,128 @@
+{
+    "products": {
+    "red": [
+        {
+            "id": "1",
+            "title": "Semillion",
+            "qty": "500 ml",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/clouduser/image/upload/v1647441303/Mockup1_cg45zi.png",
+            "desc": "Cabernet Sauvignon is one of the world's most widely recognized red wine grape varieties.",
+            "mfd": "2002",
+            "instock": true
+        },
+        {
+            "id": "2",
+            "title": "Semillion",
+            "qty": "500 ml",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/clouduser/image/upload/v1647441303/Mockup1_cg45zi.png",
+            "desc": "Cabernet Sauvignon is one of the world's most widely recognized red wine grape varieties.",
+            "mfd": "2002",
+            "instock": true
+        },
+        {
+            "id": "3",
+            "title": "Semillion",
+            "qty": "500 ml",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/clouduser/image/upload/v1647441303/Mockup1_cg45zi.png",
+            "desc": "Cabernet Sauvignon is one of the world's most widely recognized red wine grape varieties.",
+            "mfd": "2002",
+            "instock": true
+        },
+        {
+            "id": "4",
+            "title": "Semillion",
+            "qty": "500 ml",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/clouduser/image/upload/v1647441303/Mockup1_cg45zi.png",
+            "desc": "Cabernet Sauvignon is one of the world's most widely recognized red wine grape varieties.",
+            "mfd": "2002",
+            "instock": true
+        },
+        {
+            "id": "5",
+            "title": "Semillion",
+            "qty": "500 ml",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/clouduser/image/upload/v1647441303/Mockup1_cg45zi.png",
+            "desc": "Cabernet Sauvignon is one of the world's most widely recognized red wine grape varieties.",
+            "mfd": "2002",
+            "instock": true
+        },
+        {
+            "id": "6",
+            "title": "Semillion",
+            "qty": "500 ml",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/clouduser/image/upload/v1647441303/Mockup1_cg45zi.png",
+            "desc": "Cabernet Sauvignon is one of the world's most widely recognized red wine grape varieties.",
+            "mfd": "2002",
+            "instock": true
+        }
+    ],
+    "white": [
+        {
+            "id": "1",
+            "title": "Semillion",
+            "qty": "500 ml",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/clouduser/image/upload/v1647356235/Mockup-final1_to0fv8.png",
+            "desc": "Cabernet Sauvignon is one of the world's most widely recognized red wine grape varieties.",
+            "mfd": "2002",
+            "instock": true
+        },
+        {
+            "id": "2",
+            "title": "Semillion",
+            "qty": "500 ml",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/clouduser/image/upload/v1647356235/Mockup-final1_to0fv8.png",
+            "desc": "Cabernet Sauvignon is one of the world's most widely recognized red wine grape varieties.",
+            "mfd": "2002",
+            "instock": true
+        },
+        {
+            "id": "3",
+            "title": "Semillion",
+            "qty": "500 ml",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/clouduser/image/upload/v1647356235/Mockup-final1_to0fv8.png",
+            "desc": "Cabernet Sauvignon is one of the world's most widely recognized red wine grape varieties.",
+            "mfd": "2002",
+            "instock": true
+        },
+        {
+            "id": "4",
+            "title": "Semillion",
+            "qty": "500 ml",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/clouduser/image/upload/v1647356235/Mockup-final1_to0fv8.png",
+            "desc": "Cabernet Sauvignon is one of the world's most widely recognized red wine grape varieties.",
+            "mfd": "2002",
+            "instock": true
+        },
+        {
+            "id": "5",
+            "title": "Semillion",
+            "qty": "500 ml",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/clouduser/image/upload/v1647356235/Mockup-final1_to0fv8.png",
+            "desc": "Cabernet Sauvignon is one of the world's most widely recognized red wine grape varieties.",
+            "mfd": "2002",
+            "instock": true
+        },
+        {
+            "id": "6",
+            "title": "Semillion",
+            "qty": "500 ml",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/clouduser/image/upload/v1647356235/Mockup-final1_to0fv8.png",
+            "desc": "Cabernet Sauvignon is one of the world's most widely recognized red wine grape varieties.",
+            "mfd": "2002",
+            "instock": true
+        }
+    ]
+    }
+}
