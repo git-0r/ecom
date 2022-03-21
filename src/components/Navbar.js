@@ -5,16 +5,16 @@ const Navbar = () => {
                 <ion-icon name="beer-outline"></ion-icon>
                 wine & spirits
             </div>
-            <div className="nav-section-center d-flex flex-justify-evenly">
-                <p className="d-flex flex-justify-evenly flex-align-center">Shop
+            <ul className="nav-section-center d-flex flex-justify-evenly">
+                <li className="d-flex flex-justify-evenly flex-align-center">Shop
                     <ion-icon name="caret-down-outline"></ion-icon>
-                </p>
-                <p className="d-flex flex-justify-evenly flex-align-center">Our wines
+                </li>
+                <li className="d-flex flex-justify-evenly flex-align-center">Our wines
                     <ion-icon name="caret-down-outline"></ion-icon>
-                </p>
-                <p>About us</p>
-                <p>Blog</p>
-            </div>
+                </li>
+                <li>About us</li>
+                <li>Blog</li>
+            </ul>
             <div className="nav-section-right d-flex flex-justify-evenly">
                 <div className="badge">
                     <div className="badge-icon">

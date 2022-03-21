@@ -15,9 +15,12 @@
 .nav-section-left {
   flex: 1;
 }
+
 .nav-section-center {
   flex: 4;
+  list-style: none;
 }
+
 .nav-section-right {
   flex: 1;
   font-weight: 700;
@@ -118,7 +121,8 @@
 
 .new-product {
   flex: 1;
-  height: 30vh;
+  height: auto;
+  padding: 0 1rem;
   position: relative;
   border-radius: var(--border-radius-lg);
   background-size: cover;
@@ -147,13 +151,12 @@
 .new-product-image {
   top: -2.5rem;
   right: 3rem;
-  height: 40vh;
+  height: 15rem;
   position: absolute;
 }
 
 .new-product-desc {
-  margin: 2rem 1rem;
-  width: 60%;
+  width: 70%;
 }
 
 .new-product-about {
@@ -256,6 +259,10 @@
     display: none;
   }
 
+  .large-heading {
+    font-size: 4rem;
+  }
+
   .video-wrapper {
     margin: 15rem 1rem 10rem 1rem;
   }
@@ -278,7 +285,8 @@
   }
 
   .new-product-image {
-    height: 20vh;
+    top: 1rem;
+    height: 10rem;
   }
 
   .product-list {
