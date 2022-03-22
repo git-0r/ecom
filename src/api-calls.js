@@ -1,4 +1,4 @@
-const BASE_URL = "http://ecom-srvr.herokuapp.com";
+const BASE_URL = "https://ecom-srvr.herokuapp.com";
 
 
 const getProducts = async () => {
