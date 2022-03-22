@@ -1,6 +1,4 @@
-// const BASE_URL = "http://localhost:3001";
-// Fake server for deployment
-const BASE_URL = "https://my-json-server.typicode.com/git-0r/fake-server"
+const BASE_URL = "http://ecom-srvr.herokuapp.com";
 
 
 const getProducts = async () => {
@@ -8,4 +6,14 @@ const getProducts = async () => {
     return res.json();
 }
 
-export { getProducts }
+const getProductsByCategory = async (category, limit) => {
+    const res = await fetch(`${BASE_URL}/products/category/${category}/${limit}`);
+    return res.json();
+}
+
+const getProductById = async (id) => {
+    const res = await fetch(`${BASE_URL}/products/${id}`);
+    return res.json();
+}
+
+export { getProducts, getProductsByCategory, getProductById }

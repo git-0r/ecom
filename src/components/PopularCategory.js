@@ -1,6 +1,14 @@
+import { useEffect, useState } from "react"
+import { getProductsByCategory } from "../api-calls"
 import ProductCard from "./ProductCard"
 
-const PopularCategory = ({ category, products }) => {
+const PopularCategory = ({ category, limit }) => {
+    const [products, setProducts] = useState()
+
+    useEffect(() => {
+        getProductsByCategory(category, limit)
+            .then(data => setProducts(data))
+    }, [category, limit])
 
     return (
         <>
@@ -9,9 +17,8 @@ const PopularCategory = ({ category, products }) => {
                 {
                     products
                         ? products
-                            .slice(0, 4)
                             .map(
-                                product => <ProductCard product={product} key={product.id} />
+                                product => <ProductCard product={product} key={product._id} />
                             )
                         : <div className="product-text">Loading...</div>
                 }
