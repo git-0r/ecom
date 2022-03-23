@@ -4,6 +4,7 @@
 @import url("https://component-library2-e0gyj72zv-git-0r.vercel.app/css/main.css");
 
 @import "./pages/home.css";
+@import "./pages/product.css";
 
 :root {
   --ff-josefin: "Josefin Slab", serif;
@@ -19,4 +20,8 @@ body {
 .page-container {
   margin: 0 auto;
   max-width: 1440px;
+}
+
+.react-router-link {
+  text-decoration: none;
 }

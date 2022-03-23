@@ -1,0 +1,18 @@
+.product-section {
+  color: var(--ecom-clr-primary);
+  margin: 1rem 2rem;
+}
+
+.product-section-right {
+  font-family: var(--ff-josefin);
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.btn {
+  font-weight: 700;
+}
+
+.product-section-image {
+  height: 50vh;
+}

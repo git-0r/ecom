@@ -1,4 +1,9 @@
+import { useCart } from "../contexts/cartContext";
+
 const Navbar = () => {
+
+    const [cart] = useCart();
+
     return (
         <nav className="navbar d-flex flex-justify-evenly flex-align-center">
             <div className="nav-section-left logo d-flex flex-justify-evenly">
@@ -22,7 +27,12 @@ const Navbar = () => {
                     </div>
                     <span className="badge-md badge-primary">0</span>
                 </div>
-                <ion-icon name="cart-outline"></ion-icon>
+                <div className="badge">
+                    <div className="badge-icon">
+                        <ion-icon name="cart-outline"></ion-icon>
+                    </div>
+                    <span className="badge-md badge-primary">{cart.length}</span>
+                </div>
                 <ion-icon name="person-outline"></ion-icon>
             </div>
         </nav>
