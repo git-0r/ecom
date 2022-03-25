@@ -1,34 +1,20 @@
 /* -----------Navbar styles----------- */
 
-.navbar {
-  height: 4rem;
-  font-size: 1.5rem;
+.top-navigation {
   color: var(--ecom-clr-primary);
-  position: sticky;
-  top: 0;
-  z-index: 1;
   background-color: black;
   font-family: var(--ff-josefin);
   border-bottom: 1px solid var(--ecom-clr-bg-dark);
 }
 
-.nav-section-left {
-  flex: 1;
-}
-
-.nav-section-center {
-  flex: 4;
-  list-style: none;
-}
-
-.nav-section-right {
-  flex: 1;
-  font-weight: 700;
+.top-navigation .center {
+  padding: 0;
 }
 
 .logo {
   font-family: var(--ff-dancingscript);
 }
+
 /* -----------Home page header styles----------- */
 
 .header {

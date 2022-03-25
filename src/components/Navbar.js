@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../contexts/cartContext";
 
 const Navbar = () => {
@@ -5,12 +6,14 @@ const Navbar = () => {
     const [cart] = useCart();
 
     return (
-        <nav className="navbar d-flex flex-justify-evenly flex-align-center">
-            <div className="nav-section-left logo d-flex flex-justify-evenly">
-                <ion-icon name="beer-outline"></ion-icon>
-                wine & spirits
-            </div>
-            <ul className="nav-section-center d-flex flex-justify-evenly">
+        <nav className="top-navigation d-flex flex-justify-evenly flex-align-center">
+            <Link className="react-router-link" to="/">
+                <div className="left logo d-flex flex-justify-evenly">
+                    <ion-icon name="beer-outline"></ion-icon>
+                    wine & spirits
+                </div>
+            </Link>
+            <ul className="center d-flex flex-justify-evenly">
                 <li className="d-flex flex-justify-evenly flex-align-center">Shop
                     <ion-icon name="caret-down-outline"></ion-icon>
                 </li>
@@ -20,19 +23,21 @@ const Navbar = () => {
                 <li>About us</li>
                 <li>Blog</li>
             </ul>
-            <div className="nav-section-right d-flex flex-justify-evenly">
+            <div className="right d-flex flex-justify-evenly">
                 <div className="badge">
                     <div className="badge-icon">
                         <ion-icon name="heart-outline"></ion-icon>
                     </div>
                     <span className="badge-md badge-primary">0</span>
                 </div>
-                <div className="badge">
-                    <div className="badge-icon">
-                        <ion-icon name="cart-outline"></ion-icon>
+                <Link className="react-router-link" to="/cart">
+                    <div className="badge">
+                        <div className="badge-icon">
+                            <ion-icon name="cart-outline"></ion-icon>
+                        </div>
+                        <span className="badge-md badge-primary">{cart.products?.length}</span>
                     </div>
-                    <span className="badge-md badge-primary">{cart.length}</span>
-                </div>
+                </Link>
                 <ion-icon name="person-outline"></ion-icon>
             </div>
         </nav>
