@@ -5,11 +5,17 @@ import { useState, useEffect } from "react";
 import AddToCartButton from "../components/AddToCartButton";
 
 const Product = () => {
+
   const { id } = useParams();
   const [product, setProduct] = useState();
 
   useEffect(() => {
-    getProductById(id).then((data) => setProduct(data));
+
+    (async () => {
+      const data = await getProductById(id);
+      setProduct(data);
+    })()
+
   }, [id]);
 
   return (

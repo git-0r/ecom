@@ -3,11 +3,14 @@ import { getProductsByCategory } from "../api-calls"
 import ProductCard from "./ProductCard"
 
 const PopularCategory = ({ category, limit }) => {
+
     const [products, setProducts] = useState()
 
     useEffect(() => {
-        getProductsByCategory(category, limit)
-            .then(data => setProducts(data))
+        (async () => {
+            const data = await getProductsByCategory(category, limit);
+            setProducts(data);
+        })()
     }, [category, limit])
 
     return (
