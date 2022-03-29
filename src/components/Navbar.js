@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../contexts/cartContext";
+import { useUser } from "../contexts/userContext";
 
 const Navbar = () => {
 
-    const [cart] = useCart();
+    const [cart, updateCart] = useCart();
+    const [user, setUser] = useUser();
+
+    const logout = () => {
+        localStorage.clear();
+        updateCart({ type: "LOGOUT" })
+        setUser({ type: "LOGOUT" });
+    }
 
     return (
         <nav className="top-navigation d-flex flex-justify-evenly flex-align-center">
@@ -23,7 +31,14 @@ const Navbar = () => {
                 <li>About us</li>
                 <li>Blog</li>
             </ul>
-            <div className="right d-flex flex-justify-evenly">
+            <div className="right d-flex flex-justify-evenly flex-align-center">
+                <div>
+                    {
+                        user
+                            ? <button className="btn btn-secondary" onClick={logout}>Logout</button>
+                            : <Link to="/login" className="react-router-link">Login</Link>
+                    }
+                </div>
                 <div className="badge">
                     <div className="badge-icon">
                         <ion-icon name="heart-outline"></ion-icon>
@@ -38,7 +53,6 @@ const Navbar = () => {
                         <span className="badge-md badge-primary">{cart.products?.length}</span>
                     </div>
                 </Link>
-                <ion-icon name="person-outline"></ion-icon>
             </div>
         </nav>
     )

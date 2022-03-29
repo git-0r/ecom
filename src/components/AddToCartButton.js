@@ -1,15 +1,23 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { addToCart } from "../api-calls";
 import { useCart } from "../contexts/cartContext";
+import { useUser } from "../contexts/userContext";
 
 const AddToCartButton = ({ product }) => {
 
     const [cart, updateCart] = useCart();
     const [productIncart, setProductInCart] = useState(false);
+    const [user] = useUser();
 
 
-    const handleCart = () => {
-        updateCart({ type: "INCREASE_IN_CART", payload: { ...product, quantity: 1 } })
+    const handleCart = async () => {
+
+        if (user) {
+            await addToCart(product, user);
+        }
+
+        updateCart({ type: "ADD_TO_CART", payload: { ...product, quantity: 1 } });
     }
 
     useEffect(() => {

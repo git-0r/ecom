@@ -1,0 +1,14 @@
+.form {
+  color: var(--ecom-clr-primary);
+  background-color: var(--ecom-clr-bg-dark);
+  font-family: var(--ff-josefin);
+  font-weight: var(--fw-bold);
+}
+
+.input-label {
+  font-size: 1.2rem;
+}
+
+.form-input {
+  font-size: 1.5rem;
+}
