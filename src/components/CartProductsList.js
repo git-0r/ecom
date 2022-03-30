@@ -1,11 +1,20 @@
+import { removeFromCartInDB, updateCartInDB } from "../api-calls";
 import ProductCard from "../components/ProductCard";
 import { useCart } from "../contexts/cartContext";
+import { useUser } from "../contexts/userContext";
 
 
 const CartProductsList = () => {
     const [cart, updateCart] = useCart();
+    const [user] = useUser();
 
-    const modifyCart = (action) => {
+    const modifyCart = async (action) => {
+
+        if (user) {
+            action.type === "REMOVE_FROM_CART"
+                ? await removeFromCartInDB(action.payload, user)
+                : await updateCartInDB(action, user)
+        }
         updateCart(action);
     };
 
