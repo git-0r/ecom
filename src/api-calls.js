@@ -1,6 +1,8 @@
 const axios = require('axios');
 
-const BASE_URL = "https://ecom-srvr.herokuapp.com";
+const BASE_URL = process.env.NODE_ENV === "development"
+    ? "http://localhost:3003"
+    : "https://ecom-srvr.herokuapp.com";
 
 
 const getProducts = async () => {
@@ -63,6 +65,24 @@ const removeFromCartInDB = async (product, user) => {
         });
 }
 
+const addToWishlistInDB = async (productId, user) => {
+    await axios.put(
+        `${BASE_URL}/wishlist/addtowishlist/${user._id}`,
+        { productId },
+        {
+            headers: { token: `Bearer ${user.accessToken}` }
+        });
+}
+
+const removeFromWishlistInDB = async (productId, user) => {
+    await axios.put(
+        `${BASE_URL}/wishlist/removefromwishlist/${user._id}`,
+        { productId },
+        {
+            headers: { token: `Bearer ${user.accessToken}` }
+        });
+}
+
 export {
     getProducts,
     getProductsByCategory,
@@ -71,5 +91,7 @@ export {
     register,
     addToCart,
     updateCartInDB,
-    removeFromCartInDB
+    removeFromCartInDB,
+    addToWishlistInDB,
+    removeFromWishlistInDB
 }

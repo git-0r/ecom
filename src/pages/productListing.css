@@ -1,0 +1,33 @@
+.product-listing-container {
+  display: grid;
+  margin: 0 2rem;
+  grid-template-columns: 3fr 9fr;
+  font-family: var(--ff-josefin);
+  color: var(--ecom-clr-primary);
+}
+
+.products-list {
+  flex-wrap: wrap;
+  gap: 5rem;
+}
+
+.product-price {
+  font-size: 1.2rem;
+  font-weight: var(--fw-semibold);
+}
+
+.icon-wishlist {
+  padding: 0.3rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--ecom-clr-bg-dark);
+}
+
+.icon-wishlist-red ion-icon {
+  color: rgb(255, 0, 56);
+}
+
+ion-icon {
+  color: var(--clr-white-full);
+}

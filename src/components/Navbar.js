@@ -1,22 +1,25 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../contexts/cartContext";
 import { useUser } from "../contexts/userContext";
+import { useWishlist } from "../contexts/wishlistContext";
 
 const Navbar = () => {
 
     const [cart, updateCart] = useCart();
     const [user, setUser] = useUser();
+    const [wishlist, updateWishlist] = useWishlist();
 
     const logout = () => {
         localStorage.clear();
-        updateCart({ type: "LOGOUT" })
+        updateCart({ type: "LOGOUT" });
+        updateWishlist({ type: "LOGOUT" });
         setUser({ type: "LOGOUT" });
     }
 
     return (
         <nav className="top-navigation d-flex flex-justify-evenly flex-align-center">
             <Link className="react-router-link" to="/">
-                <div className="left logo d-flex flex-justify-evenly">
+                <div className="left logo d-flex flex-center">
                     <ion-icon name="beer-outline"></ion-icon>
                     wine & spirits
                 </div>
@@ -36,15 +39,17 @@ const Navbar = () => {
                     {
                         user
                             ? <button className="btn btn-secondary" onClick={logout}>Logout</button>
-                            : <Link to="/login" className="react-router-link">Login</Link>
+                            : <Link to="/login" className="react-router-link btn btn-primary">Login</Link>
                     }
                 </div>
-                <div className="badge">
-                    <div className="badge-icon">
-                        <ion-icon name="heart-outline"></ion-icon>
+                <Link className="react-router-link" to="/wishlist">
+                    <div className="badge">
+                        <div className="badge-icon">
+                            <ion-icon name="heart-outline"></ion-icon>
+                        </div>
+                        <span className="badge-md badge-primary">{wishlist?.products?.length}</span>
                     </div>
-                    <span className="badge-md badge-primary">0</span>
-                </div>
+                </Link>
                 <Link className="react-router-link" to="/cart">
                     <div className="badge">
                         <div className="badge-icon">

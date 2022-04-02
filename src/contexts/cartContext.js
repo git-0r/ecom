@@ -1,7 +1,6 @@
 import { createContext, useReducer, useContext, useEffect } from "react";
 import cartReducer from "../reducers/cartReducer";
 import { useUser } from "../contexts/userContext";
-// import { updateCartInDB } from "../api-calls";
 import { useLocalStorage } from "../utils/localStorage";
 
 const CartContext = createContext()

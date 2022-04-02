@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { getProductsByCategory } from "../api-calls"
 import ProductCard from "./ProductCard"
 
@@ -26,7 +27,7 @@ const PopularCategory = ({ category, limit }) => {
                         : <div className="product-text">Loading...</div>
                 }
             </div>
-            <button className="btn btn-primary btn-viewall">view all</button>
+            <Link to={`/products/${category}`} className="btn btn-primary btn-viewall">view all</Link>
         </>
     )
 }

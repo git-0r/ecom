@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import { getProductById } from "../api-calls";
 import { useState, useEffect } from "react";
 import AddToCartButton from "../components/AddToCartButton";
+import AddToWishlistButton from "../components/AddToWishlistButton";
+import Footer from "../components/Footer";
 
 const Product = () => {
 
@@ -36,8 +38,12 @@ const Product = () => {
             <div>
               <AddToCartButton product={product} />
             </div>
+            <div>
+              <AddToWishlistButton product={product} />
+            </div>
           </div>
         </section>
+        <Footer />
       </main>
     </>
   );
