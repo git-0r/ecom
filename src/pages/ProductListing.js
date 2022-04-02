@@ -37,6 +37,8 @@ const ProductListing = () => {
 
         const isFilterAlreadyApplied = activeFilters.findIndex(filter => filter.filterName === filterName);
 
+        // Add or remove filterValues from active filters
+        // If filterValue is array which can contain multiple filter values
         if (filterName === "variety-filter" || filterName === "price-filter") {
 
             isFilterAlreadyApplied !== -1
@@ -52,7 +54,7 @@ const ProductListing = () => {
                 : setActiveFilters(state => [...state, { filterName, filterValue: [filterValue] }])
         }
         else {
-
+            // If filterValue is string
             isFilterAlreadyApplied !== -1
                 ? setActiveFilters(
                     state => state.map(
@@ -64,7 +66,7 @@ const ProductListing = () => {
         }
     }
 
-    useEffect(() => setFilteredProducts(filter(products, activeFilters)), [activeFilters])
+    useEffect(() => setFilteredProducts(filter(products, activeFilters)), [activeFilters, products])
 
     return (
         <>

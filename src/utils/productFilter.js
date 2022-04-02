@@ -1,92 +1,69 @@
-let counter = 0;
-
 const filter = (products, activeFilters) => {
 
+    // Check if filters array isn't empty
     if (activeFilters.length) {
 
-        const filterToBeApplied = activeFilters[counter].filterName;
-        const valueOfFilterToBeApplied = activeFilters[counter].filterValue;
+        let filteredProducts;
 
-        if (filterToBeApplied === "rating-filter") {
+        for (let i = 0; i < activeFilters.length; i++) {
 
-            const filteredProducts = products.filter(
-                product => product.rating >= Number(valueOfFilterToBeApplied))
+            const filterToBeApplied = activeFilters[i].filterName;
+            const valueOfFilterToBeApplied = activeFilters[i].filterValue;
 
-            if (counter < activeFilters.length - 1) {
-
-                counter++;
-
-                return filter(filteredProducts, activeFilters);
-            }
-            else {
-                return filteredProducts;
-            }
-        }
-        if (filterToBeApplied === "price-filter") {
-
+            // Check if filter has a value and isn't an empty string/array
             if (valueOfFilterToBeApplied.length) {
 
-                const priceArray = valueOfFilterToBeApplied.reduce(
-                    (acc, curr) => [...curr.split("-").map(value => Number(value)), ...acc], [])
+                switch (filterToBeApplied) {
 
-                const minProductvalue = Math.min(...priceArray)
-                const maxProductvalue = Math.max(...priceArray)
+                    case "rating-filter":
 
-                const filteredProducts = products.filter(
-                    product => Number(product.price) >= minProductvalue && Number(product.price) < maxProductvalue)
+                        // Filter products based on ratings they have
+                        filteredProducts = (filteredProducts ?? products)?.filter(
+                            product => product.rating >= Number(valueOfFilterToBeApplied));
 
-                if (counter < activeFilters.length - 1) {
+                        break;
 
-                    counter++;
+                    case "price-filter":
 
-                    return filter(filteredProducts, activeFilters);
-                }
-                else {
+                        // Price filterValue can be array with multiple price ranges
+                        const priceRanges = valueOfFilterToBeApplied.map(
+                            range => range.split("-").map(price => Number(price)))
 
-                    return filteredProducts;
-                }
-            } else {
 
-                if (counter < activeFilters.length - 1) {
+                        let productsFilteredByPriceRange = [];
 
-                    counter++;
+                        // Loop over priceRanges array and filter products 
+                        for (let i = 0; i < priceRanges.length; i++) {
 
-                    return filter(products, activeFilters);
-                } else {
-                    return products
-                }
-            }
+                            const minProductvalue = priceRanges[i][0];
+                            const maxProductvalue = priceRanges[i][1];
 
-        }
-        if (filterToBeApplied === "variety-filter") {
+                            productsFilteredByPriceRange = [
+                                ...productsFilteredByPriceRange,
+                                ...(filteredProducts ?? products)?.filter(product =>
+                                    Number(product.price) >= minProductvalue
+                                    && Number(product.price) < maxProductvalue)
+                            ]
+                        }
 
-            if (valueOfFilterToBeApplied.length) {
+                        filteredProducts = productsFilteredByPriceRange;
+                        break;
 
-                const filteredProducts = products.filter(product => valueOfFilterToBeApplied.includes(product.variety))
+                    case "variety-filter":
 
-                if (counter < activeFilters.length - 1) {
+                        // Filter products based on variety/category or sub-category
+                        filteredProducts = (filteredProducts ?? products)?.filter(
+                            product => valueOfFilterToBeApplied.includes(product.variety))
 
-                    counter++;
+                        break;
 
-                    return filter(filteredProducts, activeFilters);
-                }
-                else {
-
-                    return filteredProducts;
-                }
-            } else {
-
-                if (counter < activeFilters.length - 1) {
-
-                    counter++;
-
-                    return filter(products, activeFilters);
-                } else {
-                    return products
+                    default:
+                        filteredProducts = products;
+                        break;
                 }
             }
-
         }
+        return filteredProducts ?? products;
     }
 }
 
