@@ -15,13 +15,22 @@ const CartProductsList = () => {
         try {
 
             if (user) {
-                action.type === "REMOVE_FROM_CART"
-                    ? await removeFromCartInDB(action.payload, user)
-                    : await updateCartInDB(action, user)
-            }
-            updateCart(action);
+                if (action.type === "REMOVE_FROM_CART") {
 
-            notificationHandler("Removed from cart")
+                    await removeFromCartInDB(action.payload, user)
+                    notificationHandler("Removed from cart")
+
+                }
+                else {
+
+                    await updateCartInDB(action, user)
+                }
+            }
+            else {
+                action.type === "REMOVE_FROM_CART" && notificationHandler("Removed from cart")
+            }
+
+            updateCart(action);
         }
         catch (error) {
 

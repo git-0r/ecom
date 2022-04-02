@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { removeFromWishlistInDB } from "../api-calls";
 import AddToCartButton from "../components/AddToCartButton";
 import Navbar from "../components/Navbar";
@@ -46,7 +45,6 @@ const Wishlist = () => {
                             <img src="https://res.cloudinary.com/clouduser/image/upload/c_scale,w_300/v1648734042/welcome-sign_fbursm.png" alt="login" />
                             <div className="d-flex flex-center">
                                 <p className="large-heading">Login to view wishlist</p>
-                                {/* <Link className="btn btn-primary" to="/login">Login</Link> */}
                             </div>
                         </div>
                 }
