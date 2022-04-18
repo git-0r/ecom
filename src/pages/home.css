@@ -1,7 +1,7 @@
 /* -----------Navbar styles----------- */
 
 .top-navigation {
-  color: var(--ecom-clr-primary);
+  color: var(--clr-white-full);
   background-color: black;
   font-family: var(--ff-josefin);
   border-bottom: 1px solid var(--ecom-clr-bg-dark);
@@ -215,6 +215,7 @@
 .btn-viewall {
   font-family: var(--ff-josefin);
   display: block;
+  width: fit-content;
   margin: 0 auto;
   font-weight: 600;
   font-size: 1.2rem;

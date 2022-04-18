@@ -1,21 +1,41 @@
 import { removeFromCartInDB, updateCartInDB } from "../api-calls";
 import ProductCard from "../components/ProductCard";
 import { useCart } from "../contexts/cartContext";
+import { useNotification } from "../contexts/notificationContext";
 import { useUser } from "../contexts/userContext";
 
 
 const CartProductsList = () => {
     const [cart, updateCart] = useCart();
     const [user] = useUser();
+    const { notificationHandler } = useNotification();
 
     const modifyCart = async (action) => {
 
-        if (user) {
-            action.type === "REMOVE_FROM_CART"
-                ? await removeFromCartInDB(action.payload, user)
-                : await updateCartInDB(action, user)
+        try {
+
+            if (user) {
+                if (action.type === "REMOVE_FROM_CART") {
+
+                    await removeFromCartInDB(action.payload, user)
+                    notificationHandler("Removed from cart")
+
+                }
+                else {
+
+                    await updateCartInDB(action, user)
+                }
+            }
+            else {
+                action.type === "REMOVE_FROM_CART" && notificationHandler("Removed from cart")
+            }
+
+            updateCart(action);
         }
-        updateCart(action);
+        catch (error) {
+
+            notificationHandler(error.message);
+        }
     };
 
     return (
@@ -32,20 +52,20 @@ const CartProductsList = () => {
                         <button
                             className="btn-modify-quantity"
                             onClick={() =>
-                                modifyCart({ type: "INCREASE_IN_CART", payload: product })
-                            }
-                        >
-                            +
-                        </button>
-                        <p className="heading-lg">{product.quantity}</p>
-                        <button
-                            className="btn-modify-quantity"
-                            onClick={() =>
                                 modifyCart({ type: "DECREASE_IN_CART", payload: product })
                             }
                             disabled={product.quantity < 2}
                         >
                             -
+                        </button>
+                        <p className="heading-lg">{product.quantity}</p>
+                        <button
+                            className="btn-modify-quantity"
+                            onClick={() =>
+                                modifyCart({ type: "INCREASE_IN_CART", payload: product })
+                            }
+                        >
+                            +
                         </button>
                     </div>
                     <div className="cart-product-price d-flex flex-center">

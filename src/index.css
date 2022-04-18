@@ -7,6 +7,7 @@
 @import "./pages/product.css";
 @import "./pages/cart.css";
 @import "./pages/login.css";
+@import "./pages/productListing.css";
 
 :root {
   --ff-josefin: "Josefin Slab", serif;
@@ -27,4 +28,8 @@ body {
 .react-router-link {
   text-decoration: none;
   color: inherit;
+}
+
+.flex-dir-column{
+  flex-direction: column;
 }
