@@ -54,9 +54,24 @@ const LoginForm = () => {
         }
     }
 
+    const guestLogin = async () => {
+
+        try {
+            const { cart, wishlist, ...user } = await login({ email: "test@email.com", password: "Test@123" });
+            setUser({ type: "LOGIN", payload: user });
+            cart && updateCart({ type: "SET_CART", payload: cart });
+            wishlist && updateWishlist({ type: "SET_WISHLIST", payload: wishlist });
+            navigate("/");
+
+            notificationHandler("Login success!");
+        } catch (error) {
+            notificationHandler(error.message)
+        }
+    }
+
     return (
         <>
-            <div className="d-flex flex-center">
+            <div className="d-flex flex-center flex-dir-column">
                 <form className="form" onSubmit={handleFormSubmit}>
                     <label className="input-label" htmlFor="email">Email</label>
                     <input className="input form-input" id="email" name="email" type="email" placeholder="something@gmail.com" required onChange={handleFormInput} />
@@ -82,6 +97,7 @@ const LoginForm = () => {
                         <Link className="react-router-link" to="/register">New customer? Create an account.</Link>
                     </div>
                 </form>
+                <button className="btn btn-link" onClick={guestLogin}>Guest Log in</button>
             </div>
             <Footer />
         </>

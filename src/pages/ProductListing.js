@@ -67,6 +67,8 @@ const ProductListing = () => {
     }
 
     useEffect(() => setFilteredProducts(filter(products, activeFilters)), [activeFilters, products])
+    const redVariety = ["Cabernet Sauvignon", "Merlot", "Zinfandel", "Syrah", "Malbec", "Pinot Noir"];
+    const whiteVariety = ["Chardonnay", "Sauvignon Blanc", "Moscato", "Pinot Grigio", "Riesling", "Viognier"];
 
     return (
         <>
@@ -74,66 +76,35 @@ const ProductListing = () => {
             <p className="large-heading">{category}</p>
             <main className="product-listing-container">
                 <div>
-                    <p className="heading-lg">Filters</p>
+                    <div className="d-flex flex-justify-between flex-align-center">
+                        <p className="heading-lg">Filters</p>
+                        <button className="btn btn-link" onClick={() => setActiveFilters([])}>Clear all</button>
+                    </div>
                     <div>
                         {
                             category === "red"
                                 ? <details open>
                                     <summary className="text-xl">Variety</summary>
                                     <ul className="styled-list">
-                                        <li>
-                                            <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value="Cabernet Sauvignon" id="Cabernet Sauvignon" />
-                                            <label htmlFor="Cabernet Sauvignon" className="text-lg">Cabernet Sauvignon</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value="Merlot" id="Merlot" />
-                                            <label htmlFor="Merlot" className="text-lg">Merlot</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value="Zinfandel" id="Zinfandel" />
-                                            <label htmlFor="Zinfandel" className="text-lg">Zinfandel</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value="Syrah" id="Syrah" />
-                                            <label htmlFor="Syrah" className="text-lg">Syrah</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value="Malbec" id="Malbec" />
-                                            <label htmlFor="Malbec" className="text-lg">Malbec</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value="Pinot Noir" id="Pinot Noir" />
-                                            <label htmlFor="Pinot Noir" className="text-lg">Pinot Noir</label>
-                                        </li>
+                                        {
+                                            redVariety?.map(variety => <li key={variety
+                                            }>
+                                                <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value={variety} id={variety} />
+                                                <label htmlFor={variety} className="text-lg">{variety}</label>
+                                            </li>)
+                                        }
                                     </ul>
                                 </details>
                                 : <details open>
                                     <summary className="text-xl">Variety</summary>
                                     <ul className="styled-list">
-                                        <li>
-                                            <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value="Chardonnay" id="Chardonnay" />
-                                            <label htmlFor="Chardonnay" className="text-lg">Chardonnay</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value="Sauvignon Blanc" id="Sauvignon Blanc" />
-                                            <label htmlFor="Sauvignon Blanc" className="text-lg">Sauvignon Blanc</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value="Moscato" id="Moscato" />
-                                            <label htmlFor="Moscato" className="text-lg">Moscato</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value="Pinot Grigio" id="Pinot Grigio" />
-                                            <label htmlFor="Pinot Grigio" className="text-lg">Pinot Grigio</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value="Riesling" id="Riesling" />
-                                            <label htmlFor="Riesling" className="text-lg">Riesling</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value="Viognier" id="Viognier" />
-                                            <label htmlFor="Viognier" className="text-lg">Viognier</label>
-                                        </li>
+                                        {
+                                            whiteVariety?.map(variety => <li key={variety
+                                            }>
+                                                <input type="checkbox" onChange={handleFilterChange} name="variety-filter" value={variety} id={variety} />
+                                                <label htmlFor={variety} className="text-lg">{variety}</label>
+                                            </li>)
+                                        }
                                     </ul>
                                 </details>
                         }

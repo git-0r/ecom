@@ -24,14 +24,14 @@ const Wishlist = () => {
                 {
                     user
                         ? wishlist.products.length
-                            ? <div className="product-list d-flex flex-justify-evenly flex-align-center">
+                            ? <div className="product-list d-flex flex-justify-evenly flex-center">
                                 {
                                     wishlist.products
                                         .map(product =>
-                                            <div key={product._id}>
+                                            <div key={product._id} className="d-flex flex-dir-column flex-center">
                                                 <ProductCard product={product} />
-                                                <AddToCartButton product={product} />
-                                                <div>
+                                                <div className="d-flex flex-dir-column">
+                                                    <AddToCartButton product={product} />
                                                     <button className="btn btn-link" onClick={() => removeFromWishlist(product)}>Remove</button>
                                                 </div>
                                             </div>
