@@ -1,16 +1,14 @@
 const userReducer = (state, action) => {
+  switch (action.type) {
+    case "LOGIN":
+      return action.payload;
+    case "REGISTER":
+      return action.payload;
+    case "LOGOUT":
+      return null;
+    default:
+      return state;
+  }
+};
 
-    switch (action.type) {
-
-        case "LOGIN":
-            return action.payload
-        case "REGISTER":
-            return action.payload
-        case "LOGOUT":
-            return null;
-        default:
-            return state
-    }
-}
-
-export default userReducer;
+export { userReducer };

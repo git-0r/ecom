@@ -1,18 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;500;600;700&display=swap");
-
-@import url("https://component-library2-mriynwwcq-git-0r.vercel.app/css/main.css");
-
-@import "./pages/home.css";
-@import "./pages/product.css";
-@import "./pages/cart.css";
-@import "./pages/login.css";
-@import "./pages/productListing.css";
-
 :root {
   --ff-josefin: "Josefin Slab", serif;
   --ff-dancingscript: "Dancing Script", cursive;
-  --ecom-clr-orangered: rgb(255, 69, 0);
 }
 
 body {
@@ -32,4 +20,8 @@ body {
 
 .flex-dir-column{
   flex-direction: column;
+}
+
+.gap-1{
+  gap: 1rem;
 }

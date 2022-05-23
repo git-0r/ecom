@@ -1,32 +1,31 @@
-import { createContext, useReducer, useContext, useEffect } from "react";
-import wishlistReducer from "../reducers/wishlistReducer";
-import { useLocalStorage } from "../utils/localStorage";
-import { useUser } from "./userContext";
+import { useEffect, useReducer, useContext, createContext } from "react";
+
+import { useUser, wishlistReducer, useLocalStorage } from "../exports";
 
 const wishlistContext = createContext();
 
 const WishlistProvider = ({ children }) => {
+  const userWishlist = useLocalStorage("userWishlist");
+  const { user } = useUser();
 
-    const userWishlist = useLocalStorage("userWishlist");
-    const [user] = useUser();
+  const initialState = () => userWishlist ?? { products: [] };
 
-    const initialState = () => userWishlist ?? { products: [] };
+  const [wishlist, updateWishlist] = useReducer(
+    wishlistReducer,
+    initialState()
+  );
 
-    const [wishlist, updateWishlist] = useReducer(wishlistReducer, initialState());
+  useEffect(() => {
+    user && localStorage.setItem("userWishlist", JSON.stringify(wishlist));
+  }, [wishlist]);
 
-    useEffect(() => {
-
-        user && localStorage.setItem("userWishlist", JSON.stringify(wishlist));
-
-    }, [wishlist])
-
-    return (
-        <wishlistContext.Provider value={[wishlist, updateWishlist]}>
-            {children}
-        </wishlistContext.Provider>
-    )
-}
+  return (
+    <wishlistContext.Provider value={{ wishlist, updateWishlist }}>
+      {children}
+    </wishlistContext.Provider>
+  );
+};
 
 const useWishlist = () => useContext(wishlistContext);
 
-export { WishlistProvider, useWishlist }
+export { WishlistProvider, useWishlist };

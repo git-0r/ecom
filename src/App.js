@@ -1,16 +1,23 @@
+import { Notification } from "./exports";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { CartProvider } from "./contexts/cartContext";
-import Home from "./pages/Home";
-import Product from "./pages/Product";
-import Cart from "./pages/Cart";
-import Login from "./pages/Login";
-import { UserProvider } from "./contexts/userContext";
-import Register from "./pages/Register";
-import Wishlist from "./pages/Wishlist";
-import { WishlistProvider } from "./contexts/wishlistContext";
-import Notification from "./components/Notification";
-import { NotificationProvider } from "./contexts/notificationContext";
-import ProductListing from "./pages/ProductListing";
+import {
+  Home,
+  Product,
+  Cart,
+  Login,
+  Register,
+  Wishlist,
+  ProductListing,
+  CheckoutSuccess,
+  CheckoutFailed,
+} from "./exports";
+import {
+  CartProvider,
+  UserProvider,
+  WishlistProvider,
+  NotificationProvider,
+} from "./contexts/exports";
+import { Address } from "./pages/exports";
 
 const App = () => {
   return (
@@ -26,7 +33,13 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/wishlist" element={<Wishlist />} />
-                <Route path="/products/:category" element={<ProductListing />} />
+                <Route
+                  path="/products/:category"
+                  element={<ProductListing />}
+                />
+                <Route path="/cart/address" element={<Address />} />
+                <Route path="/order/success" element={<CheckoutSuccess />} />
+                <Route path="/order/failed" element={<CheckoutFailed />} />
               </Routes>
             </BrowserRouter>
             <Notification />

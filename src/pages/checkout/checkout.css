@@ -1,0 +1,36 @@
+main {
+  font-family: var(--ff-josefin);
+  padding: 3rem;
+  color: var(--clr-white-full);
+}
+
+.address-form {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  width: fit-content;
+}
+
+.address-form input {
+  font-size: 1.5rem;
+  font-weight: var(--fw-medium);
+}
+
+.btn-payment {
+  font-size: 1.5rem;
+}
+
+.order-success {
+  color: var(--clr-success-full);
+}
+
+.order-success ion-icon {
+  color: inherit;
+}
+
+.order-failed {
+  color: var(--clr-error-full);
+}
+
+.order-failed ion-icon {
+  color: inherit;
+}

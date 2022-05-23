@@ -1,30 +1,25 @@
-import { createContext, useState, useContext } from "react";
+import { useState, useContext, createContext } from "react";
 
-const NotificationContext = createContext()
+const NotificationContext = createContext();
 
 const NotificationProvider = ({ children }) => {
+  const [timeoutId, setTimeoutId] = useState();
+  const [notification, setNotification] = useState(null);
 
-    const [notification, setNotification] = useState(null);
-    const [timeoutId, setTimeoutId] = useState();
+  const notificationHandler = (msg) => {
+    clearTimeout(timeoutId);
+    setNotification(msg);
+    const id = setTimeout(() => setNotification(null), 4000);
+    setTimeoutId(id);
+  };
 
-    const notificationHandler = (msg) => {
-
-        clearTimeout(timeoutId);
-
-        setNotification(msg);
-
-        const id = setTimeout(() => setNotification(null), 4000);
-
-        setTimeoutId(id);
-    }
-
-    return (
-        <NotificationContext.Provider value={{ notification, notificationHandler }}>
-            {children}
-        </NotificationContext.Provider>
-    )
-}
+  return (
+    <NotificationContext.Provider value={{ notification, notificationHandler }}>
+      {children}
+    </NotificationContext.Provider>
+  );
+};
 
 const useNotification = () => useContext(NotificationContext);
 
-export { NotificationProvider, useNotification }
+export { NotificationProvider, useNotification };

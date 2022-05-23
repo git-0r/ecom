@@ -1,0 +1,94 @@
+/* -----------Navbar styles----------- */
+
+.top-navigation {
+    color: var(--clr-white-full);
+    background-color: black;
+    font-family: var(--ff-josefin);
+    border-bottom: 1px solid var(--ecom-clr-bg-dark);
+}
+
+.top-navigation .center {
+    padding: 0;
+    flex: 3;
+    position: relative;
+}
+
+.logo {
+    font-family: var(--ff-dancingscript);
+}
+
+.top-navigation .left {
+    flex: 1;
+}
+
+.top-navigation .right {
+    flex: 2;
+}
+
+.search-input {
+    width: 100%;
+    height: 2rem;
+    padding: 0.5rem;
+    font-family: inherit;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: var(--border-radius-sm);
+}
+
+.search-icon{
+    background:transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.usermenu {
+    position: relative;
+    cursor: pointer;
+}
+
+.usermenu-options {
+    position: absolute;
+    top: 20%;
+    left: -150%;
+    padding: 0.5rem;
+    display: none;
+    background-color: var(--ecom-clr-bg-dark);
+    border-radius: var(--border-radius-sm);
+}
+
+.usermenu:hover > .usermenu-options {
+    display: block;
+}
+
+.usermenu-icon {
+    flex: 1;
+}
+
+.usermenu-option {
+    flex: 3;
+    margin: 0.2rem 0;
+}
+
+.usermenu-option:hover {
+    text-decoration: underline;
+}
+
+.badge-md {
+    font-weight: var(--fw-bold);
+    font-size: 1rem;
+}
+
+.search-results {
+    position: absolute;
+    top: 3rem;
+    width: 100%;
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--ecom-clr-bg-dark);
+}
+
+.search-result {
+    margin: 0.5rem;
+    display: block;
+}
+

@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const useCheckProductIncart = (cart, product) => {
+const useCheckProductExists = (collection, product) => {
+  const [productInCollection, setProductInCollection] = useState(false);
 
-    const [productIncart, setProductInCart] = useState(false);
+  useEffect(() => {
+    const productIndex = collection?.findIndex(
+      (productInCollection) => productInCollection._id === product?._id
+    );
+    setProductInCollection(productIndex === -1 ? false : true);
+  }, [collection, product]);
 
-    const productIndex = cart.products?.findIndex(productIncart => productIncart._id === product?._id);
+  return productInCollection;
+};
 
-    productIndex === -1
-        ? setProductInCart(false)
-        : setProductInCart(true);
-
-    return { productIncart }
-}
-
-export { useCheckProductIncart }
+export { useCheckProductExists };
