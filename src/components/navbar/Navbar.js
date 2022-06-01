@@ -132,17 +132,21 @@ const Navbar = () => {
           <div className="badge-icon">
             <ion-icon name="heart-outline"></ion-icon>
           </div>
-          <span className="badge-md badge-primary">
-            {wishlist?.products?.length}
-          </span>
+          {wishlist?.products?.length > 0 && (
+            <span className="badge-md badge-primary">
+              {wishlist?.products?.length}
+            </span>
+          )}
         </Link>
         <Link to="/cart" className="badge react-router-link">
           <div className="badge-icon">
             <ion-icon name="cart-outline"></ion-icon>
           </div>
-          <span className="badge-md badge-primary">
-            {cart.products?.length}
-          </span>
+          {cart.products?.length > 0 && (
+            <span className="badge-md badge-primary">
+              {cart.products?.length}
+            </span>
+          )}
         </Link>
       </div>
     </nav>
