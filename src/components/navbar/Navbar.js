@@ -119,10 +119,6 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
-            <li className="d-flex flex-center gap-1">
-              <ion-icon name="person-outline"></ion-icon>
-              <p className="usermenu-option">profile</p>
-            </li>
           </ul>
         </div>
         <Link className="badge react-router-link" to="/wishlist">

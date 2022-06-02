@@ -48,6 +48,8 @@ const cartReducer = (state, action) => {
 
     case "LOGOUT":
       return { products: [], total: 0 };
+    case "CLEAR":
+      return { products: [], total: 0 };
     default:
       return state;
   }

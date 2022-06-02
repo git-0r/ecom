@@ -33,3 +33,13 @@ main {
 .order-failed ion-icon {
   color: inherit;
 }
+
+.order-details {
+  height: 100vh;
+}
+
+.order-details a {
+  display: block;
+  text-align: center;
+  font-size: 1.5rem;
+}

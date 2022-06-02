@@ -1,32 +1,31 @@
-import axios from "axios";
-import { authHeader, useCart, useUser } from "../../exports";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useCart, useUser } from "../../exports";
 import "./checkout.css";
+import { payment } from "../../api/payment";
 const Address = () => {
-  const { cart } = useCart();
-  const { _id, accessToken } = useUser()?.user;
+  const { cart, updateCart } = useCart();
+  const user = useUser()?.user;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (cart.products.length < 1) navigate("/cart");
+  });
 
   const continueToPayment = async (e) => {
     e.preventDefault();
-    const formData = Object.fromEntries(new FormData(e.target));
-
-    const { data } = await axios.post(
-      `http://localhost:3003/checkout/${_id}`,
-      { products: cart.products },
-      {
-        ...authHeader(accessToken),
-        "Content-Type": "text/plain",
-      }
-    );
-    window.location.href = data?.url;
+    const paymentUrl = await payment(user, cart);
+    updateCart({ type: "CLEAR" });
+    window.location.href = paymentUrl;
   };
 
   return (
-    <main>
-      <h1>Add payment address</h1>
+    <main className="d-flex flex-center">
       <form
         className="address-form d-flex flex-dir-column gap-1"
         onSubmit={continueToPayment}
       >
+        <h1 className="text-align-center">Add payment address</h1>
         <div className="d-flex gap-1">
           <div>
             <label htmlFor="firstname">First name</label>
@@ -38,6 +37,7 @@ const Address = () => {
               type="text"
               required
               placeholder="First name"
+              defaultValue="Donna"
             />
           </div>
           <div>
@@ -50,6 +50,7 @@ const Address = () => {
               minLength="3"
               type="text"
               required
+              defaultValue="Martinez"
             />
           </div>
         </div>
@@ -63,6 +64,7 @@ const Address = () => {
             type="text"
             required
             minLength="3"
+            defaultValue="2098 Juniper Drive"
           />
         </div>
         <div className="d-flex gap-1">
@@ -76,6 +78,7 @@ const Address = () => {
               type="text"
               required
               minLength="3"
+              defaultValue="New Delhi"
             />
           </div>
           <div>
@@ -88,6 +91,7 @@ const Address = () => {
               type="text"
               required
               minLength="3"
+              defaultValue="Delhi"
             />
           </div>
         </div>
@@ -102,6 +106,7 @@ const Address = () => {
               type="tel"
               required
               minLength="10"
+              defaultValue="9974448598"
             />
           </div>
           <div>
@@ -114,6 +119,7 @@ const Address = () => {
               type="number"
               required
               minLength="6"
+              defaultValue="110011"
             />
           </div>
         </div>
