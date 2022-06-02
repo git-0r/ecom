@@ -38,14 +38,11 @@ const Wishlist = () => {
                   className="d-flex flex-dir-column flex-center"
                 >
                   <ProductCard product={product} />
-                  <div className="d-flex flex-dir-column">
+                  <div className="d-flex flex-align-center gap-1">
+                    <div onClick={() => removeFromWishlist(product)}>
+                      <ion-icon name="trash-outline" size="large"></ion-icon>
+                    </div>
                     <AddToCartButton product={product} />
-                    <button
-                      className="btn btn-link"
-                      onClick={() => removeFromWishlist(product)}
-                    >
-                      Remove
-                    </button>
                   </div>
                 </div>
               ))}

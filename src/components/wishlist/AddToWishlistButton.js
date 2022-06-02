@@ -37,13 +37,17 @@ const AddToWishlistButton = ({ product }) => {
     }
   };
 
-  return (
-    <button
-      className="btn btn-primary"
-      onClick={productInWishlist ? removeFromWishlist : addToWishlist}
+  return productInWishlist ? (
+    <div
+      className="icon-wishlist icon-wishlist-red d-flex flex-center"
+      onClick={removeFromWishlist}
     >
-      {productInWishlist ? "Remove from wishlist" : "Add to wishlist"}
-    </button>
+      <ion-icon name="heart" size="small"></ion-icon>
+    </div>
+  ) : (
+    <div className="icon-wishlist d-flex flex-center" onClick={addToWishlist}>
+      <ion-icon name="heart-outline" size="small"></ion-icon>
+    </div>
   );
 };
 

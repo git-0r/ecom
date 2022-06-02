@@ -7,6 +7,8 @@
   font-family: var(--ff-josefin);
   font-size: 1.5rem;
   line-height: 2rem;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -15,4 +17,15 @@
 
 .product-section-image {
   height: 50vh;
+}
+
+.product-section-btns {
+  align-self: flex-end;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.product-desc {
+  width: 100%;
 }

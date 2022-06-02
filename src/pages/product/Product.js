@@ -38,12 +38,10 @@ const Product = () => {
             />
           </div>
           <div className="product-section-right">
-            <div>{product?.desc}</div>
-            <div>
-              <AddToCartButton product={product} />
-            </div>
-            <div>
+            <div className="product-desc">{product?.desc}</div>
+            <div className="product-section-btns">
               <AddToWishlistButton product={product} />
+              <AddToCartButton product={product} />
             </div>
           </div>
         </section>

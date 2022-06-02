@@ -18,7 +18,7 @@ const PopularCategory = ({ category, limit }) => {
 
   return (
     <>
-      <p id="popular-products" className="large-heading">
+      <p id="popular-products-scroll" className="large-heading">
         Popular {category} wine
       </p>
       <div className="product-list d-flex flex-justify-evenly flex-align-center">

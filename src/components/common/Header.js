@@ -4,7 +4,7 @@ const Header = () => {
       <p className="header-text">
         wine & spirits{" "}
         <a
-          href="#popular-products"
+          href="#popular-products-scroll"
           className="popular-products-link btn btn-primary"
         >
           Shop Now
