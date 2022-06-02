@@ -6,6 +6,7 @@ import {
   useWishlist,
   AddToCartButton,
   useNotification,
+  Footer,
 } from "../../exports";
 
 const Wishlist = () => {
@@ -67,6 +68,7 @@ const Wishlist = () => {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 };

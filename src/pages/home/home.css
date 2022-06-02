@@ -189,20 +189,6 @@
   font-size: 1.5rem;
 }
 
-/* --------------Footer styles------------------ */
-
-.footer {
-  background-color: var(--ecom-clr-bg-dark);
-}
-
-.footer-text {
-  font-family: var(--ff-dancingscript);
-  color: var(--ecom-clr-primary);
-  font-size: 10rem;
-  margin-bottom: 0;
-  padding: 2rem 0;
-}
-
 .btn-viewall {
   font-family: var(--ff-josefin);
   display: block;

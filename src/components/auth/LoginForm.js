@@ -2,13 +2,7 @@ import { login } from "../../api/auth";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import {
-  Footer,
-  useUser,
-  useCart,
-  useWishlist,
-  useNotification,
-} from "../../exports";
+import { useUser, useCart, useWishlist, useNotification } from "../../exports";
 
 const LoginForm = () => {
   const { setUser } = useUser();
@@ -102,7 +96,6 @@ const LoginForm = () => {
           Guest Log in
         </button>
       </div>
-      <Footer />
     </>
   );
 };

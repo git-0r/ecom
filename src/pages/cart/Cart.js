@@ -5,6 +5,7 @@ import {
   useCart,
   CartOrderDetails,
   CartProductsList,
+  Footer,
 } from "../../exports";
 
 const Cart = () => {
@@ -28,6 +29,7 @@ const Cart = () => {
           />
         </div>
       )}
+      <Footer />
     </>
   );
 };

@@ -7,6 +7,7 @@ import {
   productFilter,
   useNotification,
   ProductListingCard,
+  Footer,
 } from "../../exports";
 
 const ProductListing = () => {
@@ -255,6 +256,7 @@ const ProductListing = () => {
               ))}
         </div>
       </main>
+      <Footer />
     </>
   );
 };

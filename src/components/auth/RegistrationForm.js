@@ -1,6 +1,6 @@
 import { register } from "../../api/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useUser, Footer, useNotification } from "../../exports";
+import { useUser, useNotification } from "../../exports";
 
 const RegistrationForm = () => {
   const { setUser } = useUser();
@@ -86,7 +86,6 @@ const RegistrationForm = () => {
           </div>
         </form>
       </div>
-      <Footer />
     </>
   );
 };
