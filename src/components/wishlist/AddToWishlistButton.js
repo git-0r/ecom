@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 import { addToWishlistInDB, removeFromWishlistInDB } from "../../api/wishlist";
 
 import {
@@ -11,7 +9,6 @@ import {
 
 const AddToWishlistButton = ({ product }) => {
   const { user } = useUser();
-  const navigate = useNavigate();
   const { wishlist, updateWishlist } = useWishlist();
   const { notificationHandler } = useNotification();
   const productInWishlist = useCheckProductExists(wishlist?.products, product);
@@ -29,7 +26,7 @@ const AddToWishlistButton = ({ product }) => {
   const addToWishlist = async () => {
     try {
       if (!user) {
-        navigate("/login");
+        notificationHandler("Please login");
       } else {
         await addToWishlistInDB(product._id, user);
         notificationHandler("Added to wishlist");

@@ -1,11 +1,13 @@
 import { register } from "../../api/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUser, Footer, useNotification } from "../../exports";
 
 const RegistrationForm = () => {
   const { setUser } = useUser();
   const navigate = useNavigate();
   const { notificationHandler } = useNotification();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +19,7 @@ const RegistrationForm = () => {
       const user = await register({ name, email, password });
       setUser({ type: "REGISTER", payload: user });
       notificationHandler("Registration success.");
-      navigate("/");
+      navigate(from, { replace: true });
     } catch (error) {
       notificationHandler(error.message);
     }

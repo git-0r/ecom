@@ -1,6 +1,6 @@
 import { login } from "../../api/auth";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import {
   Footer,
@@ -16,6 +16,8 @@ const LoginForm = () => {
   const { updateCart } = useCart();
   const { updateWishlist } = useWishlist();
   const { notificationHandler } = useNotification();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +34,7 @@ const LoginForm = () => {
       setUser({ type: "LOGIN", payload: user });
       cart && updateCart({ type: "SET_CART", payload: cart });
       wishlist && updateWishlist({ type: "SET_WISHLIST", payload: wishlist });
-      navigate("/");
+      navigate(from, { replace: true });
       notificationHandler("Login success");
     } catch (error) {
       notificationHandler(error.message);

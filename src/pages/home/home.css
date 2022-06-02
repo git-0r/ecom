@@ -54,7 +54,7 @@
   font-family: var(--ff-dancingscript);
   color: var(--ecom-clr-primary);
   text-align: center;
-  margin: 0;
+  margin: 1rem 0;
 }
 
 .video-container {

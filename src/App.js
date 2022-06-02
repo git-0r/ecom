@@ -18,6 +18,7 @@ import {
   NotificationProvider,
 } from "./contexts/exports";
 import { Address } from "./pages/exports";
+import { LoggedInRoutes } from "./routes/LoggedInRoutes";
 
 const App = () => {
   return (
@@ -27,19 +28,21 @@ const App = () => {
           <WishlistProvider>
             <BrowserRouter>
               <Routes>
+                <Route element={<LoggedInRoutes />}>
+                  <Route path="/wishlist" element={<Wishlist />} />
+                  <Route path="/cart/address" element={<Address />} />
+                  <Route path="/order/success" element={<CheckoutSuccess />} />
+                  <Route path="/order/failed" element={<CheckoutFailed />} />
+                </Route>
+                <Route path="/cart" element={<Cart />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/product/:id" element={<Product />} />
-                <Route path="/cart" element={<Cart />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/wishlist" element={<Wishlist />} />
                 <Route
                   path="/products/:category"
                   element={<ProductListing />}
                 />
-                <Route path="/cart/address" element={<Address />} />
-                <Route path="/order/success" element={<CheckoutSuccess />} />
-                <Route path="/order/failed" element={<CheckoutFailed />} />
               </Routes>
             </BrowserRouter>
             <Notification />
