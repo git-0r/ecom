@@ -67,9 +67,6 @@ const Navbar = () => {
           onChange={updateQuery}
           value={query}
         />
-        <button className="search-icon d-flex flex-center">
-          <ion-icon name="search-circle-outline" size="large"></ion-icon>
-        </button>
         {query && (
           <div className="search-results">
             {searchResults?.isSearching ? (
