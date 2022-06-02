@@ -3,6 +3,10 @@
   --ff-dancingscript: "Dancing Script", cursive;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background-color: black;
@@ -18,10 +22,10 @@ body {
   color: inherit;
 }
 
-.flex-dir-column{
+.flex-dir-column {
   flex-direction: column;
 }
 
-.gap-1{
+.gap-1 {
   gap: 1rem;
 }

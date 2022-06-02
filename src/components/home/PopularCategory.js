@@ -18,7 +18,9 @@ const PopularCategory = ({ category, limit }) => {
 
   return (
     <>
-      <p className="large-heading">Popular {category} wine</p>
+      <p id="popular-products" className="large-heading">
+        Popular {category} wine
+      </p>
       <div className="product-list d-flex flex-justify-evenly flex-align-center">
         {products ? (
           products.map((product) => (

@@ -1,13 +1,11 @@
 import { register } from "../../api/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser, Footer, useNotification } from "../../exports";
-import { useState } from "react";
 
 const RegistrationForm = () => {
   const { setUser } = useUser();
   const navigate = useNavigate();
   const { notificationHandler } = useNotification();
-  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -63,14 +61,11 @@ const RegistrationForm = () => {
             className="input form-input"
             id="password"
             name="password"
-            type={passwordVisible ? "password" : "text"}
+            type="password"
             placeholder="p@$$\/\/Or|)"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             required
           />
-          <button onClick={() => setPasswordVisible((state) => !state)}>
-            toggle password
-          </button>
           <div className="input-error-msg text-sm">
             <ul>
               password must include atleast:

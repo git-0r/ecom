@@ -33,6 +33,13 @@
   transform: rotate(10deg);
 }
 
+.popular-products-link {
+  color: inherit;
+  font-size: 2rem;
+  display: block;
+  width: fit-content;
+}
+
 /* ---------------Video styles----------- */
 
 .video-wrapper {
@@ -47,6 +54,7 @@
   font-family: var(--ff-dancingscript);
   color: var(--ecom-clr-primary);
   text-align: center;
+  margin: 0;
 }
 
 .video-container {
