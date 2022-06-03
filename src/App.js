@@ -1,4 +1,4 @@
-import { Notification } from "./exports";
+import { Notification, ScrollToTop } from "./exports";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   Home,
@@ -27,23 +27,28 @@ const App = () => {
         <CartProvider>
           <WishlistProvider>
             <BrowserRouter>
-              <Routes>
-                <Route element={<LoggedInRoutes />}>
-                  <Route path="/wishlist" element={<Wishlist />} />
-                  <Route path="/cart/address" element={<Address />} />
-                  <Route path="/order/success" element={<CheckoutSuccess />} />
-                  <Route path="/order/failed" element={<CheckoutFailed />} />
-                </Route>
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/" element={<Home />} />
-                <Route path="/product/:id" element={<Product />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route
-                  path="/products/:category"
-                  element={<ProductListing />}
-                />
-              </Routes>
+              <ScrollToTop>
+                <Routes>
+                  <Route element={<LoggedInRoutes />}>
+                    <Route path="/wishlist" element={<Wishlist />} />
+                    <Route path="/cart/address" element={<Address />} />
+                    <Route
+                      path="/order/success"
+                      element={<CheckoutSuccess />}
+                    />
+                    <Route path="/order/failed" element={<CheckoutFailed />} />
+                  </Route>
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/" element={<Home />} />
+                  <Route path="/product/:id" element={<Product />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route
+                    path="/products/:category"
+                    element={<ProductListing />}
+                  />
+                </Routes>
+              </ScrollToTop>
             </BrowserRouter>
             <Notification />
           </WishlistProvider>

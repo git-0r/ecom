@@ -93,20 +93,21 @@ const ProductListing = () => {
     "Viognier",
   ];
 
+  const resetAllFilters = (e) => {
+    e.preventDefault();
+    setActiveFilters([]);
+    e.target.reset();
+  };
+
   return (
     <>
       <Navbar />
       <p className="large-heading">{category}</p>
       <main className="product-listing-container">
-        <div>
+        <form onSubmit={resetAllFilters}>
           <div className="d-flex flex-justify-between flex-align-center">
             <p className="heading-lg">Filters</p>
-            <button
-              className="btn btn-link"
-              onClick={() => setActiveFilters([])}
-            >
-              Clear all
-            </button>
+            <button className="btn btn-link">Clear all</button>
           </div>
           <div>
             {category === "red" ? (
@@ -117,7 +118,7 @@ const ProductListing = () => {
                     <li key={variety}>
                       <input
                         type="checkbox"
-                        onChange={handleFilterChange}
+                        onClick={handleFilterChange}
                         name="variety-filter"
                         value={variety}
                         id={variety}
@@ -137,7 +138,7 @@ const ProductListing = () => {
                     <li key={variety}>
                       <input
                         type="checkbox"
-                        onChange={handleFilterChange}
+                        onClick={handleFilterChange}
                         name="variety-filter"
                         value={variety}
                         id={variety}
@@ -156,7 +157,7 @@ const ProductListing = () => {
                 <li>
                   <input
                     type="checkbox"
-                    onChange={handleFilterChange}
+                    onClick={handleFilterChange}
                     name="price-filter"
                     value="1000-2000"
                     id="1000-2000"
@@ -168,7 +169,7 @@ const ProductListing = () => {
                 <li>
                   <input
                     type="checkbox"
-                    onChange={handleFilterChange}
+                    onClick={handleFilterChange}
                     name="price-filter"
                     value="2000-3000"
                     id="2000-3000"
@@ -180,7 +181,7 @@ const ProductListing = () => {
                 <li>
                   <input
                     type="checkbox"
-                    onChange={handleFilterChange}
+                    onClick={handleFilterChange}
                     name="price-filter"
                     value="3000-4000"
                     id="3000-4000"
@@ -197,7 +198,7 @@ const ProductListing = () => {
                 <li>
                   <input
                     type="radio"
-                    onChange={handleFilterChange}
+                    onClick={handleFilterChange}
                     name="rating-filter"
                     value={4}
                     id="4"
@@ -209,7 +210,7 @@ const ProductListing = () => {
                 <li>
                   <input
                     type="radio"
-                    onChange={handleFilterChange}
+                    onClick={handleFilterChange}
                     name="rating-filter"
                     value={3}
                     id="3"
@@ -221,7 +222,7 @@ const ProductListing = () => {
                 <li>
                   <input
                     type="radio"
-                    onChange={handleFilterChange}
+                    onClick={handleFilterChange}
                     name="rating-filter"
                     value={2}
                     id="2"
@@ -233,7 +234,7 @@ const ProductListing = () => {
                 <li>
                   <input
                     type="radio"
-                    onChange={handleFilterChange}
+                    onClick={handleFilterChange}
                     name="rating-filter"
                     value={1}
                     id="1"
@@ -245,7 +246,7 @@ const ProductListing = () => {
               </ul>
             </details>
           </div>
-        </div>
+        </form>
         <div className="products-list d-flex flex-justify-evenly">
           {filteredProducts
             ? filteredProducts?.map((product) => (

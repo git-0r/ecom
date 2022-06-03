@@ -50,6 +50,7 @@ export {
   productFilter,
   useLocalStorage,
   useCheckProductExists,
+  ScrollToTop,
 } from "./utils/exports";
 
 export { cartReducer, userReducer, wishlistReducer } from "./reducers/exports";
