@@ -16,16 +16,16 @@ const AddToCartButton = ({ product }) => {
   const productInCart = useCheckProductExists(cart?.products, product);
 
   const handleCart = async () => {
-    try {
-      if (user) {
+    updateCart({ type: "ADD_TO_CART", payload: { ...product, quantity: 1 } });
+
+    if (user) {
+      try {
         await addToCart(product, user);
         notificationHandler("Added to cart");
-      } else {
-        notificationHandler("Added to cart");
+      } catch (error) {
+        updateCart({ type: "REMOVE_FROM_CART", payload: product });
+        notificationHandler(error.message);
       }
-      updateCart({ type: "ADD_TO_CART", payload: { ...product, quantity: 1 } });
-    } catch (error) {
-      notificationHandler(error.message);
     }
   };
 
@@ -34,7 +34,11 @@ const AddToCartButton = ({ product }) => {
       Go to cart
     </Link>
   ) : (
-    <button className="btn btn-primary" onClick={handleCart}>
+    <button
+      className="btn btn-primary"
+      onClick={handleCart}
+      disabled={!product}
+    >
       Add to cart
     </button>
   );

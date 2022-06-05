@@ -29,3 +29,26 @@
 .product-desc {
   width: 100%;
 }
+
+@media screen and (max-width: 800px) {
+  .product-section {
+    grid-template-columns: 100%;
+  }
+
+  .product-section-btns {
+    width: 100%;
+    margin: 2rem 0;
+  }
+
+  .product-section-btns > button,
+  .product-section-btns > a {
+    width: 100%;
+    margin: 0 0.5rem;
+    display: block;
+    text-align: center;
+  }
+
+  .product-section-image {
+    height: 30vh;
+  }
+}

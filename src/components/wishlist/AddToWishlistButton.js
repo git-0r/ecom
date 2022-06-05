@@ -13,40 +13,43 @@ const AddToWishlistButton = ({ product }) => {
   const { notificationHandler } = useNotification();
   const productInWishlist = useCheckProductExists(wishlist?.products, product);
 
-  const removeFromWishlist = () => {
+  const handleWishlist = async () => {
     try {
-      removeFromWishlistInDB(product._id, user);
-      notificationHandler("Removed from wishlist");
-      updateWishlist({ type: "REMOVE_FROM_WISHLIST", payload: product._id });
-    } catch (error) {
-      notificationHandler(error.message);
-    }
-  };
-
-  const addToWishlist = async () => {
-    try {
-      if (!user) {
-        notificationHandler("Please login");
+      if (productInWishlist) {
+        updateWishlist({ type: "REMOVE_FROM_WISHLIST", payload: product._id });
+        await removeFromWishlistInDB(product._id, user);
+        notificationHandler("Removed from wishlist");
       } else {
-        await addToWishlistInDB(product._id, user);
-        notificationHandler("Added to wishlist");
-        updateWishlist({ type: "ADD_TO_WISHLIST", payload: product });
+        if (!user) {
+          notificationHandler("Please login");
+        } else {
+          updateWishlist({ type: "ADD_TO_WISHLIST", payload: product });
+          await addToWishlistInDB(product._id, user);
+          notificationHandler("Added to wishlist");
+        }
       }
     } catch (error) {
       notificationHandler(error.message);
+      updateWishlist({
+        type: `${
+          productInWishlist ? "ADD_TO_WISHLIST" : "REMOVE_FROM_WISHLIST"
+        }`,
+        payload: product,
+      });
     }
   };
 
-  return productInWishlist ? (
+  return (
     <div
-      className="icon-wishlist icon-wishlist-red d-flex flex-center"
-      onClick={removeFromWishlist}
+      className={`icon-wishlist d-flex flex-center${
+        productInWishlist ? " icon-wishlist-red" : ""
+      }`}
+      onClick={handleWishlist}
     >
-      <ion-icon name="heart" size="small"></ion-icon>
-    </div>
-  ) : (
-    <div className="icon-wishlist d-flex flex-center" onClick={addToWishlist}>
-      <ion-icon name="heart-outline" size="small"></ion-icon>
+      <ion-icon
+        name={productInWishlist ? "heart" : "heart-outline"}
+        size="small"
+      ></ion-icon>
     </div>
   );
 };

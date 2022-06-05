@@ -1,6 +1,7 @@
-main {
+.address-wrapper {
   font-family: var(--ff-josefin);
   color: var(--clr-white-full);
+  padding: 0 2rem;
 }
 
 .address-form {

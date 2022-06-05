@@ -8,7 +8,7 @@ const cartReducer = (state, action) => {
 
       return {
         products: [...state.products, productToAdd],
-        total: state.total + productToAdd.price,
+        total: state.total + productToAdd.price * productToAdd.quantity,
       };
 
     case "INCREASE_IN_CART":

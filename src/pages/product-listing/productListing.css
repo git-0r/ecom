@@ -7,7 +7,9 @@
 }
 
 .products-list {
-  flex-wrap: wrap;
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 5rem;
 }
 
@@ -30,4 +32,10 @@
 
 ion-icon {
   color: var(--clr-white-full);
+}
+
+@media screen and (max-width: 800px) {
+  .products-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

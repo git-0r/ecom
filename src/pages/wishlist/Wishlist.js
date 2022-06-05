@@ -14,14 +14,15 @@ const Wishlist = () => {
   const { wishlist, updateWishlist } = useWishlist();
   const { notificationHandler } = useNotification();
 
-  const removeFromWishlist = (product) => {
+  const removeFromWishlist = async (product) => {
     try {
       if (user) {
-        removeFromWishlistInDB(product._id, user);
+        updateWishlist({ type: "REMOVE_FROM_WISHLIST", payload: product._id });
+        await removeFromWishlistInDB(product._id, user);
       }
-      updateWishlist({ type: "REMOVE_FROM_WISHLIST", payload: product._id });
     } catch (error) {
       notificationHandler(error.message);
+      updateWishlist({ type: "ADD_TO_WISHLIST", payload: product });
     }
   };
 
